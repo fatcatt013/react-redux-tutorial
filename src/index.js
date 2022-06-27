@@ -4,14 +4,16 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import configureStore from './redux/configureStore';
+import { Provider as ReduxProvider } from 'react-redux';
 
-function Hi() {
-  return <div>Hi.</div>;
-}
+const store = configureStore();
 
 render(
-  <Router>
-    <App />
-  </Router>,
+  <ReduxProvider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </ReduxProvider>,
   document.getElementById('app'),
 );
